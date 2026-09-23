@@ -21,7 +21,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 
-contactForm.addEventListener('submit', (event) => {
+contactForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   if (!contactForm.checkValidity()) {
@@ -31,9 +31,31 @@ contactForm.addEventListener('submit', (event) => {
     return;
   }
 
-  // TODO: replace with a real submission endpoint (e.g. Formspree, a
-  // serverless function, or your own backend) before going live.
-  formStatus.textContent = "Thanks — we'll get back to you within one business day.";
-  formStatus.dataset.state = 'success';
-  contactForm.reset();
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
+  formStatus.textContent = 'Sending...';
+  formStatus.dataset.state = '';
+
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: new FormData(contactForm),
+    });
+    const result = await response.json();
+
+    if (result.success) {
+      formStatus.textContent = "Thanks — we'll get back to you within one business day.";
+      formStatus.dataset.state = 'success';
+      contactForm.reset();
+    } else {
+      formStatus.textContent = 'Something went wrong sending your message. Please email us directly.';
+      formStatus.dataset.state = 'error';
+    }
+  } catch {
+    formStatus.textContent = 'Something went wrong sending your message. Please email us directly.';
+    formStatus.dataset.state = 'error';
+  } finally {
+    submitButton.disabled = false;
+  }
 });

@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Manifest Digital — Websites for small & medium businesses</title>
 <meta name="description" content="Web development, redesigns, CRM setup, SEO, and SaaS builds for small and medium businesses — handled personally, start to finish.">
+<link rel="icon" type="image/png" href="assets/img/Black%20and%20White%20Minimalist%20Monogram%20Personal%20Logo.png">
+<link rel="apple-touch-icon" href="assets/img/Black%20and%20White%20MinimalistMonogram%20Personal%20Logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -220,6 +222,10 @@
       </div>
 
       <form class="contact-form" id="contactForm" novalidate>
+        <input type="hidden" name="access_key" value="a5ae95d5-203a-40a8-9234-de3ab224fe19">
+        <input type="hidden" name="subject" value="New inquiry from themanifestdigital.com">
+        <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off">
+
         <div class="form-row">
           <label for="name">Your name</label>
           <input type="text" id="name" name="name" autocomplete="name" required>
@@ -267,7 +273,9 @@
 <footer class="site-footer">
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <a href="#home" class="wordmark">The Manifest Digital<span class="wordmark-dot">.</span></a>
+      <a href="#home" class="footer-logo-link">
+        <span class="footer-logo" role="img" aria-label="The Manifest Digital logo"></span>
+      </a>
       <p>Websites, CRM, SEO, and SaaS builds for small &amp; medium businesses.</p>
     </div>
   </div>
