@@ -170,11 +170,11 @@ img, svg { display: block; max-width: 100%; }
   font-family: var(--font-body);
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--paper);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.site-header .wordmark { color: var(--ink); }
 .wordmark-dot { color: var(--brass); }
 
 .nav-toggle {
